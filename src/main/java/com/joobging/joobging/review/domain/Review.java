@@ -19,6 +19,7 @@ public class Review {
 
     private String content;
 
+
     private Long star;
 
     // location이랑 연결
