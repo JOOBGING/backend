@@ -38,7 +38,7 @@ public class WebSecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**", "/review/**", "/board/**").permitAll() // url 추가(로그인 필요 없는 기능이면)
+                .antMatchers("/auth/**", "/review/**", "/board/**", "/comment/**").permitAll() // url 추가(로그인 필요 없는 기능이면)
                 .anyRequest().authenticated()
 
                 .and()

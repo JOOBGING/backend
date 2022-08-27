@@ -1,6 +1,7 @@
 package com.joobging.joobging.member.domain;
 
 import com.joobging.joobging.board.domain.Board;
+import com.joobging.joobging.comment.domain.Comment;
 import com.joobging.joobging.review.domain.Review;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,9 +47,15 @@ public class Member {
                 orphanRemoval = true)
     private List<Board> boardList = new ArrayList<>();
 
+    // comment와 연결
+    @OneToMany(mappedBy = "member",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
+
     @Builder
     public Member(Long id, String email, String password, String name, Authority authority, String mbti,
-                  List<Review> reviewList, List<Board> boardList){
+                  List<Review> reviewList, List<Board> boardList, List<Comment> commentList){
         this.id = id;
         this.email = email;
         this.password = password;
@@ -57,5 +64,11 @@ public class Member {
         this.mbti = mbti;
         this.reviewList = reviewList;
         this.boardList = boardList;
+        this.commentList = commentList;
+    }
+
+    // 연관관계 메소드
+    public void addComment(Comment comment){
+        commentList.add(comment);
     }
 }
