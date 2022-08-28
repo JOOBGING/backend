@@ -3,10 +3,11 @@ package com.joobging.joobging.board.controller;
 import com.joobging.joobging.board.domain.Board;
 import com.joobging.joobging.board.dto.BoardSaveDto;
 import com.joobging.joobging.board.repository.BoardRepository;
+import com.joobging.joobging.board.service.BoardServiceImpl;
+import com.joobging.joobging.comment.domain.Comment;
 import com.joobging.joobging.member.domain.Member;
 import com.joobging.joobging.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class BoardController {
     private final BoardRepository boardRepository;
     private final MemberRepository memberRepository;
+
+    private final BoardServiceImpl boardService;
 
     /* @PutMapping("/board/{id}")
     public void update(@RequestBody BoardSaveDto dto, @PathVariable Long id){
@@ -33,7 +36,12 @@ public class BoardController {
 
     @GetMapping("/board/{id}")
     public Board findById(@PathVariable Long id) {
+
         return boardRepository.findById(id).get();
+    }
+    @GetMapping("/board/{id}/comment")
+    public Comment findCommentById(@PathVariable Long id) {
+        return boardService.findById(id).get();
     }
 
 
