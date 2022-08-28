@@ -27,6 +27,8 @@ public class Board {
 
     private String map;
 
+    private String loname;
+
     // 멤버와 연결
     @ManyToOne
     @JoinColumn(name = "member_id")

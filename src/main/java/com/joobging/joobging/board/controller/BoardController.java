@@ -1,6 +1,8 @@
 package com.joobging.joobging.board.controller;
 
 import com.joobging.joobging.board.domain.Board;
+import com.joobging.joobging.board.dto.BoardOnlyResponseDto;
+import com.joobging.joobging.board.dto.BoardResponseDto;
 import com.joobging.joobging.board.dto.BoardSaveDto;
 import com.joobging.joobging.board.repository.BoardRepository;
 import com.joobging.joobging.board.service.BoardServiceImpl;
@@ -35,19 +37,18 @@ public class BoardController {
     }
 
     @GetMapping("/board/{id}")
-    public Board findById(@PathVariable Long id) {
-
-        return boardRepository.findById(id).get();
+    public BoardOnlyResponseDto findById(@PathVariable Long id) {
+        return boardService.findById(id);
     }
-    @GetMapping("/board/{id}/comment")
-    public Comment findCommentById(@PathVariable Long id) {
-        return boardService.findById(id).get();
-    }
+//    @GetMapping("/board/{id}/comment")
+//    public Comment findCommentById(@PathVariable Long id) {
+//        return boardService.findById(id).get();
+//    }
 
 
     @GetMapping("/board")
-    public List<Board> findAll(){
-        return boardRepository.findAll();
+    public List<BoardResponseDto> findAll(){
+        return boardService.findAll();
     }
 
     @PostMapping("/board")
