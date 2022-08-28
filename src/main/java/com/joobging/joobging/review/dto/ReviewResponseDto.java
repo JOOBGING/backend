@@ -12,12 +12,14 @@ public class ReviewResponseDto {
     private String content;
     private Long star;
     private String name;
+    private String mbti;
 
     public ReviewResponseDto(Review review){
         this.id = review.getId();
         this.content = review.getContent();
         this.star = review.getStar();
         this.name = review.getMember().getName();
+        this.mbti = review.getMember().getMbti();
     }
 
 

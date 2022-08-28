@@ -1,5 +1,6 @@
 package com.joobging.joobging.review.dto;
 
+import com.joobging.joobging.location.domain.Location;
 import com.joobging.joobging.member.domain.Member;
 import com.joobging.joobging.review.domain.Review;
 import lombok.Builder;
@@ -14,20 +15,23 @@ public class ReviewRequestDto {
 
     private String content;
     private Long star;
-    private Long mid; // member_id
+    private Long member; // member_id
+    private Long location; // location_id
 
     @Builder
-    public ReviewRequestDto(String content, Long star, Long mid){
+    public ReviewRequestDto(String content, Long star, Long member, Long location){
         this.content = content;
         this.star = star;
-        this.mid = mid;
+        this.member = member;
+        this.location = location;
     }
 
-    public Review toEntity(Member member){
+    public Review toEntity(Member member, Location location){
         return Review.builder()
                 .content(content)
                 .star(star)
                 .member(member)
+                .location(location)
                 .build();
     }
 
