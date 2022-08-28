@@ -1,5 +1,6 @@
 package com.joobging.joobging.review.domain;
 
+import com.joobging.joobging.location.domain.Location;
 import com.joobging.joobging.member.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +24,9 @@ public class Review {
     private Long star;
 
     // location이랑 연결
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     // 멤버랑 연결
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,9 +35,10 @@ public class Review {
 
     // 생성자
     @Builder
-    public Review(String content, Long star, Member member){
+    public Review(String content, Long star, Member member, Location location){
         this.content = content;
         this.star = star;
         this.member = member;
+        this.location = location;
     }
 }
