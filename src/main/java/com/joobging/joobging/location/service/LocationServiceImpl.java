@@ -45,4 +45,12 @@ public class LocationServiceImpl implements LocationService{
         return locationList.stream().map(LocationOneResponseDto::new).collect(Collectors.toList());
     }
 
+
+    // location 이름 받으면 정보 띄워주기 -> id, latitude, longitude, name
+    public LocationOneResponseDto findLocationByName(String name){
+        Optional<Location> location = locationRepository.findByName(name);
+        LocationOneResponseDto locationOneResponseDto = new LocationOneResponseDto(location.get());
+        return locationOneResponseDto;
+    }
+
 }

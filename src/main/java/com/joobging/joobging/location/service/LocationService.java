@@ -16,4 +16,5 @@ public interface LocationService {
     List<LocationOneResponseDto> findAll();
 
     // location 단건 조회
+    LocationOneResponseDto findLocationByName(String name);
 }

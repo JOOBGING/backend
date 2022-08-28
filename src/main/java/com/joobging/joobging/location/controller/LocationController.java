@@ -28,4 +28,9 @@ public class LocationController {
     public List<LocationOneResponseDto> findAll(){
         return locationService.findAll();
     }
+
+    @GetMapping("/name/{location-name}")
+    public LocationOneResponseDto findLocationBy(@PathVariable("location-name") String name){
+        return locationService.findLocationByName(name);
+    }
 }
