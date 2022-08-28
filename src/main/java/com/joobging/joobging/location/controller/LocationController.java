@@ -5,10 +5,7 @@ import com.joobging.joobging.location.dto.LocationResponseDto;
 import com.joobging.joobging.location.service.LocationServiceImpl;
 import com.joobging.joobging.review.dto.ReviewResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
