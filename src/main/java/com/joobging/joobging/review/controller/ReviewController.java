@@ -29,7 +29,7 @@ public class ReviewController {
         return reviewService.delete(id);
     }
 
-    // review 조회
+    // review 조회 -> location/review/{id}로 기능 대체 가능해 보임
     @GetMapping("")
     public List<ReviewResponseDto> findAll(){
         return reviewService.findAll();
