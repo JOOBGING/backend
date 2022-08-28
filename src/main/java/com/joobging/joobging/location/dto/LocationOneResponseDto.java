@@ -8,11 +8,13 @@ import lombok.Setter;
 @Setter
 public class LocationOneResponseDto {
 
+    private Long id;
     private String name;
     private Double latitude;//위도
     private Double longitude;//경도
 
     public LocationOneResponseDto(Location entity){
+        this.id = entity.getId();
         this.name = entity.getName();
         this.latitude = entity.getLatitude(); // 위도
         this.longitude = entity.getLongitude(); // 경도
