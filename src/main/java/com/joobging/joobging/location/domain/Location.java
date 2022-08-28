@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,20 +17,22 @@ import javax.persistence.*;
 public class Location {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "location_id")
     private Long id;
+
     private String name;
     private Double latitude;//위도
     private Double longitude;//경도
 
-//    @ManyToOne
-//    @JoinColumn(name = "review_id")
-//    @JsonIgnore
-//    private Review review;
+
+    @OneToMany(mappedBy = "location",cascade = CascadeType.REMOVE,orphanRemoval = true)
+    private List<Review> reviewList = new ArrayList<>();
 
     @Builder
-    public Location(String name, Double latitude, Double longitude, Long star) {
+    public Location(String name, Double latitude, Double longitude, Long star, List<Review> reviewList) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.reviewList = reviewList;
     }
 }
