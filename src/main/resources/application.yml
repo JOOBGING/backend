@@ -2,9 +2,11 @@ spring:
 
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
+    # url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    #jdbc:h2:tcp://localhost/~/test
     username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    # password: 0568
+    #driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -12,6 +14,9 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+
+  profiles:
+    include: aws
 
 logging:
   level:
