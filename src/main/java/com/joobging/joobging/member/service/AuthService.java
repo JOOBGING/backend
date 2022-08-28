@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -34,8 +36,12 @@ public class AuthService {
     public TokenDto signIn(MemberRequestDto requestDto){
         UsernamePasswordAuthenticationToken authenticationToken = requestDto.toAuthentication();
         Authentication authentication = managerBuilder.getObject().authenticate(authenticationToken);
-        return tokenProvider.generateTokenDto(authentication);
+        TokenDto tokenDto =  tokenProvider.generateTokenDto(authentication);
+        Optional<Member> memberResponseDto = memberRepository.findByEmail(requestDto.getEmail());
+        tokenDto.setMemberId(memberResponseDto.get().getId());
+        return tokenDto;
     }
 
+    //return new SignInResponseDto(token, member.getId(), member.getNickName(), member.getMbti()); // 발급된 토큰과 유저 고유 id 반환
 
 }
