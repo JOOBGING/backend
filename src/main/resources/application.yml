@@ -1,12 +1,5 @@
 spring:
 
-  datasource:
-    url: jdbc:h2:tcp://localhost/~/test
-    # url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
-    #jdbc:h2:tcp://localhost/~/test
-    username: sa
-    # password: 0568
-    #driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -14,6 +7,8 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+        temp.use_jdbc_metadata_defaults: false
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
   profiles:
     include: aws
