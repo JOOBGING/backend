@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
-public class BoardOnlyResponseDto {
+public class BoardOneResponseDto {
 
     private String title;
     private String content;
@@ -21,7 +21,7 @@ public class BoardOnlyResponseDto {
     private List<CommentResponseDto> commentResponseDtoList;
 
 
-    public BoardOnlyResponseDto(Board board){
+    public BoardOneResponseDto(Board board){
         this.title = board.getTitle();
         this.content = board.getContent();
         this.name = board.getMember().getName();

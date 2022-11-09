@@ -1,12 +1,11 @@
 package com.joobging.joobging.board.controller;
 
 import com.joobging.joobging.board.domain.Board;
-import com.joobging.joobging.board.dto.BoardOnlyResponseDto;
+import com.joobging.joobging.board.dto.BoardOneResponseDto;
 import com.joobging.joobging.board.dto.BoardResponseDto;
 import com.joobging.joobging.board.dto.BoardSaveDto;
 import com.joobging.joobging.board.repository.BoardRepository;
 import com.joobging.joobging.board.service.BoardServiceImpl;
-import com.joobging.joobging.comment.domain.Comment;
 import com.joobging.joobging.member.domain.Member;
 import com.joobging.joobging.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/{id}")
-    public BoardOnlyResponseDto findById(@PathVariable Long id) {
+    public BoardOneResponseDto findById(@PathVariable Long id) {
         return boardService.findById(id);
     }
 //    @GetMapping("/board/{id}/comment")
