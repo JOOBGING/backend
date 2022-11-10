@@ -1,14 +1,12 @@
 package com.joobging.joobging.board.service;
 
 import com.joobging.joobging.board.domain.Board;
-import com.joobging.joobging.board.dto.BoardOnlyResponseDto;
+import com.joobging.joobging.board.dto.BoardOneResponseDto;
 import com.joobging.joobging.board.dto.BoardResponseDto;
 import com.joobging.joobging.board.repository.BoardRepository;
 import com.joobging.joobging.comment.domain.Comment;
 import com.joobging.joobging.comment.dto.CommentResponseDto;
 import com.joobging.joobging.comment.repository.CommentRepository;
-import com.joobging.joobging.review.dto.ReviewRequestDto;
-import com.joobging.joobging.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,10 +37,10 @@ public class BoardServiceImpl {
     }
 
     // board 단건 조회
-    public BoardOnlyResponseDto findById(Long id){
+    public BoardOneResponseDto findById(Long id){
         Optional<Board> board = boardRepository.findById(id);
         List<Comment> commentList = commentRepository.findByComment_IdOrderByCreatedDateDesc(id);
-        BoardOnlyResponseDto responseDto = new BoardOnlyResponseDto(board.get());
+        BoardOneResponseDto responseDto = new BoardOneResponseDto(board.get());
         responseDto.setCommentResponseDtoList(commentList.stream().map(CommentResponseDto::new).collect(Collectors.toList()));
         return responseDto;
     }
