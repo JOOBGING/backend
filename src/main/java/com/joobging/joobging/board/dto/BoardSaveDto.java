@@ -16,16 +16,16 @@ public class BoardSaveDto {
     private Long id;
     private String map;
     private Long memberId; // 멤버 아이디 받아오기
-    private String loname;
+    private String locationName;
 
     @Builder
-    public BoardSaveDto(String title, String content, Long id, String map, Long memberId, String loname) {
+    public BoardSaveDto(String title, String content, Long id, String map, Long memberId, String locationName) {
         this.title = title;
         this.content = content;
         this.id = id;
         this.map = map;
         this.memberId = memberId;
-        this.loname = loname;
+        this.locationName = locationName;
     }
 
     public Board toEntity(Member member){
@@ -35,7 +35,7 @@ public class BoardSaveDto {
         board.setContent(content);
         board.setMap(map);
         board.setMember(member);
-        board.setLoname(loname);
+        board.setLocationName(locationName);
         return board;
     }
 

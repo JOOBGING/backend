@@ -25,9 +25,10 @@ public class Board {
 
     private String content;
 
+    // 이거 뭐더라?
     private String map;
 
-    private String loname;
+    private String locationName;
 
     // 멤버와 연결
     @ManyToOne
@@ -42,6 +43,13 @@ public class Board {
     // 연관관계 메소드
     public void addComment(Comment comment){
         commentList.add(comment);
+    }
+
+    public void update(String title, String content, String map, String locationName){
+        this.title = title;
+        this.content = content;
+        this.map = map;
+        this.locationName = locationName;
     }
 }
 
