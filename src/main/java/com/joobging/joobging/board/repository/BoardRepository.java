@@ -12,9 +12,8 @@ import java.util.Optional;
 public interface BoardRepository extends JpaRepository<Board,Long> {
     @Override
     List<Board> findAll();
-    void deleteById(Long id);
-    Optional<Board> findById(Long id);
 
-    @Query("select b from Board b where b.loname = :name")
+
+    @Query("select b from Board b where b.locationName = :name")
     Board findByBoardName(String name);
 }

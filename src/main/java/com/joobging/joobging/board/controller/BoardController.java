@@ -53,8 +53,8 @@ public class BoardController {
 
     @PutMapping("/board/{id}")
     public Long update(@PathVariable Long id, @RequestBody BoardUpdateDto boardUpdateDto) {
-        Board board = boardRepository.findById(id).orElseThrow();
-        board.update(boardUpdateDto.getTitle(), board.getContent(), board.getMap(), board.getLocationName());
+        Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("board id does not exist"));
+        board.update(boardUpdateDto.getTitle(), boardUpdateDto.getContent(), boardUpdateDto.getMap(), boardUpdateDto.getLocationName());
         return board.getId();
     }
 }
